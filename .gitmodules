@@ -1,3 +1,3 @@
 [submodule "wxWidgets"]
-	path = wxWidgets
+	path = submodule/wxWidgets
 	url = git@github.com:wxWidgets/wxWidgets.git
