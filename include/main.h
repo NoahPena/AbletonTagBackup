@@ -38,8 +38,27 @@ public:
     virtual bool OnInit();
 };
 
+class MyDialog1 : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText6;
+		wxStdDialogButtonSizer* m_sdbSizer1;
+		wxButton* m_sdbSizer1OK;
+		wxButton* m_sdbSizer1Cancel;
+
+	public:
+
+		MyDialog1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+
+};
+
 class MyFrame : public wxFrame
 {
+private:
+
+
 protected:
     wxStaticText* m_staticText1;
     wxRadioBox* m_radioBox3;
@@ -50,6 +69,11 @@ protected:
     wxStaticText* m_staticText3;
     wxFilePickerCtrl* m_filePicker1;
     wxButton* m_button1;
+
+    MyDialog1* m_dialogBox;
+
+    virtual void onOperationBoxClick(wxCommandEvent& event);
+    virtual void onStartButtonClick(wxCommandEvent& event);
 
 public:
     MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size);
