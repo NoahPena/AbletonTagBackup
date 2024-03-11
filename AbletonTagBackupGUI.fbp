@@ -105,7 +105,7 @@
             <property name="minimize_button">0</property>
             <property name="minimum_size"></property>
             <property name="moveable">1</property>
-            <property name="name">m_staticText1</property>
+            <property name="name">m_operationTextBox</property>
             <property name="pane_border">1</property>
             <property name="pane_position"></property>
             <property name="pane_size"></property>
@@ -177,7 +177,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_radioBox3</property>
+                <property name="name">m_operationSelector</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -262,7 +262,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_staticText2</property>
+                <property name="name">m_userLibraryPickerTextBox</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -323,7 +323,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_dirPicker2</property>
+                <property name="name">m_userLibraryPicker</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -389,7 +389,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_staticText4</property>
+                <property name="name">m_createBackupFilePickerTextBox</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -450,7 +450,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_dirPicker3</property>
+                <property name="name">m_createBackupFileLocationPicker</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -516,7 +516,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_staticText3</property>
+                <property name="name">m_restoreFromBackupFilePickerTextBox</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -577,7 +577,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_filePicker1</property>
+                <property name="name">m_restoreFromBackupFileLocationPicker</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -665,7 +665,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_button1</property>
+                <property name="name">m_startButton</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -778,7 +778,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_staticText6</property>
+                <property name="name">m_popupBoxTextBox</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
