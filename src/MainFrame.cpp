@@ -1,5 +1,6 @@
 #include "MainFrame.h"
 
+#include <filesystem>
 
 MyFrame::MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size)
     : wxFrame(NULL, wxID_ANY, title, pos, size)
@@ -35,12 +36,12 @@ MyFrame::MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size)
 	m_userLibraryPicker = new wxDirPickerCtrl( this, wxID_ANY, wxEmptyString, wxT("Select a folder"), wxDefaultPosition, wxDefaultSize, wxDIRP_DEFAULT_STYLE );
 	gSizer3->Add( m_userLibraryPicker, 0, wxALL, 5 );
 
-	m_createBackupFilePickerTextBox = new wxStaticText( this, wxID_ANY, wxT("Where to place Backup File"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_createBackupFilePickerTextBox->Wrap( -1 );
-	gSizer3->Add( m_createBackupFilePickerTextBox, 0, wxALL, 5 );
+	// m_createBackupFilePickerTextBox = new wxStaticText( this, wxID_ANY, wxT("Where to place Backup File"), wxDefaultPosition, wxDefaultSize, 0 );
+	// m_createBackupFilePickerTextBox->Wrap( -1 );
+	// gSizer3->Add( m_createBackupFilePickerTextBox, 0, wxALL, 5 );
 
-	m_createBackupFileLocationPicker = new wxDirPickerCtrl( this, wxID_ANY, wxEmptyString, wxT("Select a folder"), wxDefaultPosition, wxDefaultSize, wxDIRP_DEFAULT_STYLE );
-	gSizer3->Add( m_createBackupFileLocationPicker, 0, wxALL, 5 );
+	// m_createBackupFileLocationPicker = new wxDirPickerCtrl( this, wxID_ANY, wxEmptyString, wxT("Select a folder"), wxDefaultPosition, wxDefaultSize, wxDIRP_DEFAULT_STYLE );
+	// gSizer3->Add( m_createBackupFileLocationPicker, 0, wxALL, 5 );
 
 	m_restoreFromBackupFilePickerTextBox = new wxStaticText( this, wxID_ANY, wxT("Path to Backup Zip File"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_restoreFromBackupFilePickerTextBox->Wrap( -1 );
@@ -84,18 +85,18 @@ void MyFrame::onOperationBoxClick(wxCommandEvent& event)
 {
     if (m_operationSelector->GetSelection() == 0)
     {
-        m_createBackupFilePickerTextBox->Show(true);
+        // m_createBackupFilePickerTextBox->Show(true);
         m_restoreFromBackupFilePickerTextBox->Show(false);
 
-        m_createBackupFileLocationPicker->Show(true);
+        // m_createBackupFileLocationPicker->Show(true);
         m_restoreFromBackupFileLocationPicker->Show(false);
     }
     else
     {
-        m_createBackupFilePickerTextBox->Show(false);
+        // m_createBackupFilePickerTextBox->Show(false);
         m_restoreFromBackupFilePickerTextBox->Show(true);
 
-        m_createBackupFileLocationPicker->Show(false);
+        // m_createBackupFileLocationPicker->Show(false);
         m_restoreFromBackupFileLocationPicker->Show(true);
     }
 
@@ -109,19 +110,65 @@ void MyFrame::onOperationBoxClick(wxCommandEvent& event)
 
 void MyFrame::onStartButtonClick(wxCommandEvent& event)
 {
-	std::string user_library_location = std::string(m_userLibraryPicker->GetPath().mb_str()) + std::string(m_userLibraryPicker->GetDirName().GetFullPath().mb_str());
+	std::string user_library_location = std::string(m_userLibraryPicker->GetPath().mb_str());
 
-	std::string backup_creation_path = std::string(m_createBackupFileLocationPicker->GetPath().mb_str());
+    std::cout << user_library_location << std::endl;
+
+	// std::string backup_creation_path = std::string(m_createBackupFileLocationPicker->GetPath().mb_str());
 
 	std::string backup_restore_path = std::string(m_restoreFromBackupFileLocationPicker->GetPath().mb_str());
 
-	m_popupBox->m_popupBoxTextBox->SetLabel(user_library_location);
+    std::cout << backup_restore_path << std::endl;
 
-	m_popupBox->Layout();
-	m_popupBox->Refresh();
+    if (m_operationSelector->GetSelection() == 0)
+    {
+        if (user_library_location == "" || !std::filesystem::is_directory(user_library_location))
+        {
+            wxMessageBox(_("Please Enter A Valid Directory For User Library"), _("Error"), wxICON_ERROR, this);
 
-    m_popupBox->Show(true);
-    m_popupBox->ShowModal();
+            event.Skip();
+
+            return;
+        }
+
+        // TODO: Create Backup
+    }
+    else
+    {
+        if (user_library_location == "" || !std::filesystem::is_directory(user_library_location))
+        {
+            wxMessageBox(_("Please Enter A Valid Directory For User Library"), _("Error"), wxICON_ERROR, this);
+
+            event.Skip();
+
+            return;
+        }
+
+        if (backup_restore_path == ""   || !std::filesystem::is_regular_file(backup_restore_path))
+        {
+            wxMessageBox(_("Please Enter A Valid Backup File"), _("Error"), wxICON_ERROR, this);
+
+            event.Skip();
+
+            return;  
+        }
+
+        // TODO: Restore From Backup
+    }
+
+	// m_popupBox->m_popupBoxTextBox->SetLabel(user_library_location);
+
+	// m_popupBox->Layout();
+	// m_popupBox->Refresh();
+
+    // m_popupBox->Show(true);
+    // m_popupBox->ShowModal();
+
+    // wxFileDialog 
+    // saveFileDialog(this, _("Save XYZ file"), "", "",
+    //                 "XYZ files (*.xyz)|*.xyz", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
+
+    // saveFileDialog.ShowModal();
 
     event.Skip();
 }
