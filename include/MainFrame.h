@@ -44,5 +44,6 @@ protected:
     virtual void onStartButtonClick(wxCommandEvent& event);
 
 public:
-    MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size);
+    MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size, const long style);
+    // MyFrame(const wxString& title = wxEmptyString, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 436,283 ), long style = wxCAPTION|wxCLOSE_BOX|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxSYSTEM_MENU|wxTAB_TRAVERSAL);
 };

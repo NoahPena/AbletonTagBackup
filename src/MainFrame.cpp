@@ -1,9 +1,13 @@
 #include "MainFrame.h"
 
+#include "CreateBackup.h"
+#include "RestoreFromBackup.h"
+
 #include <filesystem>
 
-MyFrame::MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size)
-    : wxFrame(NULL, wxID_ANY, title, pos, size)
+MyFrame::MyFrame(const wxString &title, const wxPoint &pos, const wxSize &size, const long style)
+// MyFrame::MyFrame(const wxString& title, wxWindowID id, const wxPoint& pos, const wxSize& size, long style)
+    : wxFrame(NULL, wxID_ANY, title, pos, size, style)
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 
@@ -132,6 +136,7 @@ void MyFrame::onStartButtonClick(wxCommandEvent& event)
         }
 
         // TODO: Create Backup
+        createBackupFolder(user_library_location);
     }
     else
     {
