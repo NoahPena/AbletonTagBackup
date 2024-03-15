@@ -114,7 +114,7 @@ void MyFrame::onOperationBoxClick(wxCommandEvent& event)
 
 void MyFrame::onStartButtonClick(wxCommandEvent& event)
 {
-	std::string user_library_location = std::string(m_userLibraryPicker->GetPath().mb_str());
+	std::filesystem::path user_library_location(std::string(m_userLibraryPicker->GetPath().mb_str()));
 
     std::cout << user_library_location << std::endl;
 
@@ -136,7 +136,7 @@ void MyFrame::onStartButtonClick(wxCommandEvent& event)
         }
 
         // TODO: Create Backup
-        createBackupFolder(user_library_location);
+        createBackupFolderAndPopulate(user_library_location);
     }
     else
     {
