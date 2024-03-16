@@ -135,8 +135,15 @@ void MyFrame::onStartButtonClick(wxCommandEvent& event)
             return;
         }
 
-        // TODO: Create Backup
         createBackupFolderAndPopulate(user_library_location);
+
+        wxFileDialog 
+        saveFileDialog(this, _("Save ZIP file"), "", "",
+                        "ZIP files (*.zip)|*.zip", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
+
+        saveFileDialog.ShowModal();
+
+        createBackupZipFile(std::string(saveFileDialog.GetPath().mb_str()));
     }
     else
     {
@@ -169,11 +176,7 @@ void MyFrame::onStartButtonClick(wxCommandEvent& event)
     // m_popupBox->Show(true);
     // m_popupBox->ShowModal();
 
-    // wxFileDialog 
-    // saveFileDialog(this, _("Save XYZ file"), "", "",
-    //                 "XYZ files (*.xyz)|*.xyz", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
 
-    // saveFileDialog.ShowModal();
 
     event.Skip();
 }

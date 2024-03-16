@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.8)
 project(ableton-tag-backup)
 
 # add_subdirectory(division)
-set(SOURCE_FILES Main.cpp MainFrame.cpp PopUpBox.cpp CreateBackup.cpp RestoreFromBackup.cpp)
+set(SOURCE_FILES Main.cpp MainFrame.cpp PopUpBox.cpp CreateBackup.cpp RestoreFromBackup.cpp Common.cpp)
 
 # add_executable(ableton-tag-backup-src ${SOURCE_FILES})
 # target_link_libraries(divider division)
