@@ -318,6 +318,10 @@ ERROR_CODE createBackupZipFile(std::filesystem::path zip_file_location)
 
     for (auto &p : fs::recursive_directory_iterator(backup_folder_location))
     {
+        if (p.is_directory())
+        {
+            continue;
+        }
         // We need to remove the tmp from path
         std::string relative_path = p.path().string();
 
@@ -325,14 +329,19 @@ ERROR_CODE createBackupZipFile(std::filesystem::path zip_file_location)
 
         wxFileInputStream input(p.path().string());
 
-        if (p.is_directory())
+        if (!input.IsOk())
         {
-            zip.PutNextDirEntry(relative_path);
+            continue;
         }
-        else
-        {
+
+        // if (p.is_directory())
+        // {
+        //     zip.PutNextDirEntry(relative_path);
+        // }
+        // else
+        // {
             zip.PutNextEntry(relative_path);
-        }
+        // }
 
         zip.Write(input);
     }
@@ -348,6 +357,15 @@ ERROR_CODE createBackupZipFile(std::filesystem::path zip_file_location)
     }
 
     output.Close();
+
+    // Lastly delete our working directory in tmp
+    if (fs::is_directory(backup_folder_location))
+    {
+        if (!fs::remove_all(backup_folder_location))
+        {
+            return ERROR_CODE::CANT_DELETE_BACKUP_FOLDER;
+        }
+    }
 
     return ERROR_CODE::SUCCESS;
 }
